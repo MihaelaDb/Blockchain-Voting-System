@@ -1,7 +1,5 @@
 pragma solidity ^0.8.20;
 
-import "@openzeppelin/contracts/access/Ownable.sol";
-
 interface IAdmin {
     function verifyCandidateEligibility(uint _candidateId) external view returns (bool);
     function increaseCandidateVotes(uint _id) external returns (uint);
