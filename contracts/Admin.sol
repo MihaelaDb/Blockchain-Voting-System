@@ -112,7 +112,7 @@ contract Admin is Ownable {
 
         sortedCandidates = sortCandidates(sortedCandidates);
 
-        // Find the first eligible candidate
+    
         for (uint i = 0; i < sortedCandidates.length; i++) {
             if (sortedCandidates[i].state == State.Eligible) {
                 return (sortedCandidates[i].name, sortedCandidates[i].candidateAddress, sortedCandidates[i].totalVotes);

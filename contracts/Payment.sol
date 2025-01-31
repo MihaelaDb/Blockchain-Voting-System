@@ -1,10 +1,9 @@
-// contracts/Payment.sol
-// SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.20;
 
 contract Payment is Ownable {
 
-    mapping(address => uint) public votesPaid;  // Tracks the number of paid votes per voter
+    mapping(address => uint) public votesPaid;  
     uint public votingFee;
     uint public maxPaidVotes;
     uint public maxFreeVotes;
@@ -39,7 +38,6 @@ contract Payment is Ownable {
         emit PaymentReceived(voter);
     }
 
-    // Allow the owner to update the fee 
     function updateFees(uint _updatedFee) external onlyOwner {
         votingFee = _updatedFee;
         emit FeeUpdated(votingFee);
@@ -51,12 +49,11 @@ contract Payment is Ownable {
 
     }
 
-    // Function to check the total votes paid by a voter
     function getTotalPaidVotes(address voter) external view returns (uint) {
         return votesPaid[voter];
     }
 
-    // Pay the winner
+
     function releaseFunds(address winner) external onlyOwner {
         uint totalCollectedFees = address(this).balance;  
         require(totalCollectedFees > 0, "No funds to distribute");
